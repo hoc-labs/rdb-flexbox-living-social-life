@@ -24,9 +24,13 @@ Then, inside those areas, there are more components. The color-coding indicates 
 
 ![](https://raw.githubusercontent.com/hoc-labs/images/main/rdb-living-social-img4.png)
 
-### Creating the main layout HTML markup
+## Creating the main layout HTML markup
 
-Since we haven't done a larger site like this yet, let's walk through the starting markup together.
+Since we haven't done a larger site like this yet, let's walk through the starting markup together. We're just going to create the HTML elements/classes without the content (text/images). This will allow us to more easily see the overall structure.
+
+After we're done, and ready to start styling, we can replace our version with a completed version that contains all of the content.
+
+### Top-level Sections
 
 First, we'll just create the large sections:
 * **div.container**: the main container to control the width/centering.
@@ -36,14 +40,12 @@ First, we'll just create the large sections:
 
 Using these semantic elements is really important for assistive technologies.
 
-Notice the class on the `<aside>` element. This is mainly a protective measure, in case there is more than one `<aside>` element on the page.
-
 ```html
  <!-- header section goes here -->
 
 <div class="container">
     <main></main>
-    <aside class="sidebar"></aside>
+    <aside></aside>
 </div>
 
 <footer>
@@ -66,14 +68,14 @@ Within the `<main>` section, we are going to have a series of `<article>` elemen
    </main>
 ```
 
-If you look at the articles, the first one is a little bit different than the other three.
+If you look at the articles, the first one is the featured article and the layout is a little bit different than the other three.
 
 To handle this, we'll give the first `<article>` a unique class, `article-featured` and the others will all share a class `article-recent`.
 
 ### Article Structure
 #### Components within each article
 * Image
-* Date
+* Info (date/comments)
 * Title
 * Paragraph
 * Link to continue reading
@@ -128,7 +130,7 @@ Then, we can create the elements within the widgets, trying to re-use styles whe
 * and the repeating section for each post share a repeating set of styles.
 
 ```html
-<aside class="sidebar">              
+<aside>              
   <div class="sidebar-widget">
     <img src="#" alt="" class="widget-image">
       <h2 class="widget-title"></h2>
@@ -153,7 +155,14 @@ Then, we can create the elements within the widgets, trying to re-use styles whe
 </aside>
 ```
 
-### Styling
+## Styling
+
+### Start with completed markup
+Now, that we've walked through creating the markup for this layout, we need to add the real content. 
+ 
+Look in the full-desktop-markup.html and copy the content and replace the content in index.html with it so that you have all of the text/images supplied as a starting point for adding the styling.
+
+### Specs
 
 Remember that you have access to a more detailed Adobe XD spec for this project [here](https://xd.adobe.com/spec/75d448ea-569a-4b7e-721b-9bbd3b2b97b9-03e5/grid/).
 
@@ -161,10 +170,8 @@ Here is a shortened spec to use as well.
 
 ![](https://raw.githubusercontent.com/hoc-labs/images/main/rdb-living-social-img5.png)
 
-#### Full Desktop HTML Markup
-Look in the full-desktop-markup.html and copy the content and replace the content in index.html with it so that you have all of the text/images supplied as a starting point.
 
-### Start with Typography
+### Typography
 
 There are usually a lot of shared, or inherited styles that we want to setup for the entire page.
 
@@ -178,7 +185,7 @@ Also, we can setup the default font-size on the `<body>` element so that it is i
 
 body {
   font-size: 18px;
-  font-weight: 300px;
+  font-weight: 300;
 }
 
 h1, 
@@ -248,7 +255,7 @@ In the markup below, there are currently two sizes, 400, 700. You could add an a
 
 We need to break down the larger container into two columns.  We don't want to add the flex to the container class because its being used in the header as well. We want it to remain generic for the purpose of setting the width/centering the content across the sections.
 
-Looking at the `container-nav` container class in the header, it is already serving the purpose of controlling the layout of its child elements with flex. But we should rename it, so that it can be used in both places. Let's rename it `container-flex`.
+Looking at the `container-flex` container class in the header, it is already serving the purpose of controlling the layout of its child elements with flex. We can use it in both places.
 
 Now, the main content area and the aside are horizontal.
 
@@ -497,9 +504,10 @@ Using object-position:left will keep the left-size of the image, instead of the 
     border-bottom: 1px solid #707070;
     margin-bottom: 16px;
 }
-
+```
 #### Removing the last line using a pseudo-class selector
 
+```css
 .widget-recent-post:last-child {
     border: 0;
     margin: 0;

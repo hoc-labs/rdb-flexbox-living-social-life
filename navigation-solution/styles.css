@@ -38,7 +38,7 @@ Layout
   margin: 0 auto;
 }
 
-.container-nav {
+.container-flex {
   display: flex;
   justify-content: space-between;
 }

@@ -104,7 +104,7 @@ nav ul li a {
 
 ### Styling the list to make it a navigation bar
 
-The following tasks need to be completed to turn the unorder list into a navigation bar.
+The following tasks need to be completed to turn the unordered list into a navigation bar.
 * Remove the dots.
 * Change the `<li>` items to be horizontal/inline.
 * Space the nav elements
@@ -216,7 +216,7 @@ The following tasks need to be completed to turn style the navigation bar.
 * center the header element content.
 * remove the margin on the body element.
 * set up the typography for `<h1>` and `<p class="subtitle>` and `<a>` nav links.
-  * font-family, font-size, text color
+  * font-family, font-size, font-weight, text color
 * style the header
   * background color
   * padding
@@ -228,7 +228,7 @@ The following tasks need to be completed to turn style the navigation bar.
   * add an underline to the home link to indicate that it is the current page.
 
 
-Try doing these tasks on your own, and then if you run into trouble look at the detailed instructions for particular steps below or in the navigation-solution folder for the full source code.
+Try doing these tasks on your own, and then if you run into trouble, look at the detailed instructions for particular steps below or in the navigation-solution folder for the full source code.
 
 #### Center the header
 Unlike the `<li>` items, which are not block elements when they are within the flex container, the header elements are block elements, and therefore we can use `text-align:center` to center that content.
@@ -246,7 +246,7 @@ Now, the page should look like this:
 #### Remove the body margin
 As a general rule, it is a good idea to remove the margin on the body element.
 
-You can see the issue if you set the background-color on the header element to a darker color:
+You can see the issue if you temporarily set the background-color on the header element to a darker color:
 
 ![](https://raw.githubusercontent.com/hoc-labs/images/main/rdb-flexbox-nav-img6.png)
 
@@ -260,15 +260,11 @@ body {
 
 #### Remove some of the space between the title and the sub title. 
 
-This one is a little tricky. look in the inspector to see what is going on when you try to adjust the margins.
+This one is a little tricky. Look in the inspector to see what is going on when you try to adjust the margins.
 
 ![](https://raw.githubusercontent.com/hoc-labs/images/main/rdb-flexbox-nav-img7.png)
 
 It's because of the collapsing margins. The margins of the element above and below are still contributing to the space. So you wil need to set the margin-bottom:0 on the `<h1>` element above.
-
-![](https://raw.githubusercontent.com/hoc-labs/images/main/rdb-flexbox-nav-img8.png)
-
-
 
 ![](https://raw.githubusercontent.com/hoc-labs/images/main/rdb-flexbox-nav-img9.png)
 
@@ -285,6 +281,16 @@ This is a common practice to underline the active link (the page you are on). Th
 ```
 
 **Note:** In general, it's a good idea to add some padding around the `<a>` elements, especially for mobile devices, so that there is some space around the text that will be in cluded in the area that interacts with the link.
+
+```css
+nav a {
+  text-decoration: none;
+  color: #707070;
+  font-weight: 700;
+  text-transform: capitalize;
+  padding: 4px 0;
+}
+```
 
 With those changes, that wraps up the general styling for the navigation. And here is what it looks like:
 
@@ -305,7 +311,7 @@ Here's the basic layout/structure for the elements for this view.
 
 The first step is that we need a container element to prevent the content from stretching all the way across the screen. 
 
-This is the same container class that we have used multiple times before, that just sets the width, and margin, and max-width to get the contain to be centered.
+This is the same container class that we have used multiple times before, that just sets the width, and margin, and max-width to get the content to be centered.
 
 * add the container element around the content within the `<header>` element and style it as we have in the past with:
   * width
@@ -330,7 +336,7 @@ The page should look like this when you are done.
 
 I've added a border to demonstrate an issue we need to fix. We added a margin to add space around each of the nav items when they were centered. Now that they are pushed to the right, that margin is causing a problem. So, we need to modfiy the margin style a bit. 
 
-**Note:** We'll need to fix it for both cases when we handle the responsive layout.
+**Note:** We'll need to fix it for both layouts when we handle the responsive layout.
 
 before: 
 ```css
