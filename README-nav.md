@@ -224,7 +224,7 @@ The following tasks need to be completed to turn style the navigation bar.
 * style the nav link elements
   * remove the underline
   * set the hover,focus color
-  * transform the link text to be uppercase
+  * transform the link text to be capitalized
   * add an underline to the home link to indicate that it is the current page.
 
 
